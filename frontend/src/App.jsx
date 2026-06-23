@@ -9,6 +9,7 @@ import RegisterPage from './pages/RegisterPage';
 import MyUploadsPage from './pages/MyUploadsPage';
 import AdminPage from './pages/AdminPage';
 import AboutPage from './pages/AboutPage';
+import ResourceDetailsPage from './pages/ResourceDetailsPage';
 import useAuthStore from './store/authStore';
 
 export default function App() {
@@ -43,6 +44,7 @@ export default function App() {
       <Routes>
         <Route path="/"            element={<HomePage />} />
         <Route path="/about"       element={<AboutPage />} />
+        <Route path="/resource/:id" element={<ResourceDetailsPage />} />
         <Route path="/login"       element={<LoginPage />} />
         <Route path="/register"    element={<RegisterPage />} />
         <Route path="/my-uploads"  element={<ProtectedRoute><MyUploadsPage /></ProtectedRoute>} />

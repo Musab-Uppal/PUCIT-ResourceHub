@@ -9,6 +9,7 @@ const {
   approveResource,
   rejectResource,
   deleteResource,
+  getSingleResource,
 } = require("../controllers/resourceController");
 const { protect, adminOnly } = require("../middleware/auth");
 const upload = require("../config/multer");
@@ -29,5 +30,8 @@ router.get("/pending", protect, adminOnly, getPending);
 router.patch("/:id/approve", protect, adminOnly, approveResource);
 router.patch("/:id/reject", protect, adminOnly, rejectResource);
 router.delete("/:id", protect, adminOnly, deleteResource);
+
+// ── Public Single Fetch (Must be last) ───────────────────────────────────────
+router.get("/:id", getSingleResource);
 
 module.exports = router;

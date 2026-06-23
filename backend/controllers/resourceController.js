@@ -223,6 +223,25 @@ const deleteResource = async (req, res) => {
   }
 };
 
+// ─── PUBLIC: GET SINGLE RESOURCE ──────────────────────────────────────────────
+// GET /api/resources/:id
+// Fetches a single resource for the details page
+const getSingleResource = async (req, res) => {
+  try {
+    const resource = await Resource.findById(req.params.id)
+      .populate("uploadedBy", "name email");
+      
+    if (!resource) {
+      return res.status(404).json({ message: "Resource not found" });
+    }
+
+    res.json(resource);
+  } catch (err) {
+    console.error("Fetch single resource error:", err);
+    res.status(500).json({ message: "Could not fetch resource" });
+  }
+};
+
 module.exports = {
   getMeta,
   uploadResource,
@@ -232,4 +251,5 @@ module.exports = {
   approveResource,
   rejectResource,
   deleteResource,
+  getSingleResource,
 };

@@ -21,7 +21,7 @@ export default function AboutPage() {
               Please select the relevant course tag for the resource so it's easy to manage and filter. If it applies to multiple subjects, pick the primary one.
             </p>
           </div>
-          
+
           <div>
             <h3 className="text-lg font-medium text-white mb-2">👨‍🏫 Teachers</h3>
             <p className="text-slate-400 text-sm leading-relaxed">
@@ -43,9 +43,9 @@ export default function AboutPage() {
         <p className="text-slate-400 text-sm mb-6 max-w-lg mx-auto">
           Have a suggestion, found a bug, or want to share new ideas/content? We'd love to hear from you.
         </p>
-        
-        <a 
-          href="mailto:musabismail02@gmail.com?subject=PUCIT%20Hub%20Feedback"
+
+        <a
+          href="mailto:musabismail02@gmail.com?subject=PUCIT%20ResourceHub%20Feedback"
           className="inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-600 text-white px-6 py-3 rounded-xl font-medium transition-colors shadow-lg shadow-brand-500/20"
         >
           ✉️ Contact Admin

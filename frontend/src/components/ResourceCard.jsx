@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import api from '../api/axios';
 import useAuthStore from '../store/authStore';
@@ -35,8 +36,10 @@ export default function ResourceCard({ resource }) {
     onError: () => toast.error('Could not delete resource'),
   });
 
+  const navigate = useNavigate();
+
   const handleOpen = () => {
-    window.open(resource.fileUrl, '_blank', 'noopener,noreferrer');
+    navigate(`/resource/${resource._id}`);
   };
 
   const handleDelete = (e) => {

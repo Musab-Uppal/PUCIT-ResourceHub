@@ -27,7 +27,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 shrink-0">
-            <img src="/logo.png" alt="PUCIT Hub Logo" className="w-8 h-8 object-contain" />
+            <img src="/logo.png" alt="PUCIT Hub Logo" className="w-8 h-8 object-cover rounded-xl shadow-sm" />
             <span className="font-bold text-white hidden sm:block">PUCIT ResourceHub</span>
           </Link>
 
@@ -64,7 +64,7 @@ export default function Navbar() {
                 </button>
                 <AnimatePresence>
                   {menuOpen && (
-                    <motion.div 
+                    <motion.div
                       initial={{ opacity: 0, y: 10, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 10, scale: 0.95 }}
