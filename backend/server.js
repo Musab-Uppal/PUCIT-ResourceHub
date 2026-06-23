@@ -10,9 +10,21 @@ const app = express();
 connectDB();
 
 // ─── Middleware ───────────────────────────────────────────────────────────────
+// Allow localhost in dev AND the Vercel URL in production at the same time
+const ALLOWED_ORIGINS = [
+  "http://localhost:5173",
+  "http://localhost:3000",
+  process.env.CLIENT_URL, // e.g. https://pucit-resource-hub.vercel.app
+].filter(Boolean); // remove undefined if CLIENT_URL is not set
+
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "http://localhost:5173",
+    origin: (origin, callback) => {
+      // allow requests with no origin (e.g. Postman, curl, mobile apps)
+      if (!origin) return callback(null, true);
+      if (ALLOWED_ORIGINS.includes(origin)) return callback(null, true);
+      return callback(new Error(`CORS blocked: ${origin}`));
+    },
     credentials: true, // REQUIRED for httpOnly cookies to be sent cross-origin
   })
 );
