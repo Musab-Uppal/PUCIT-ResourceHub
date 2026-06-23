@@ -14,7 +14,8 @@ connectDB();
 const ALLOWED_ORIGINS = [
   "http://localhost:5173",
   "http://localhost:3000",
-  process.env.CLIENT_URL, // e.g. https://pucit-resource-hub.vercel.app
+  // Strip trailing slash so it matches the browser's Origin header exactly
+  process.env.CLIENT_URL?.replace(/\/$/, ""),
 ].filter(Boolean); // remove undefined if CLIENT_URL is not set
 
 app.use(
