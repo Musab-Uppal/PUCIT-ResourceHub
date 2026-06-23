@@ -8,16 +8,23 @@ const {
 /*
  * Helper: set the refresh token as an httpOnly cookie.
  * Centralizing this so every auth response sets the cookie identically.
- * sameSite: 'strict' prevents the cookie from being sent in cross-site requests (CSRF protection).
- * secure: true in production so cookie only travels over HTTPS.
+ *
+ * sameSite rules for cross-origin deployments (Vercel frontend + Render backend):
+ * - Production: sameSite must be 'none' + secure:true, otherwise browsers block
+ *   the cookie entirely on cross-origin requests (different domains = cross-site).
+ * - Development: 'lax' is fine because frontend and backend share localhost.
  */
+const isProduction = process.env.NODE_ENV === "production";
+
+const COOKIE_OPTIONS = {
+  httpOnly: true,
+  secure: isProduction,           // HTTPS only in prod (required for sameSite:'none')
+  sameSite: isProduction ? "none" : "lax", // 'none' allows cross-origin; 'lax' for localhost dev
+  maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in ms
+};
+
 const setRefreshCookie = (res, refreshToken) => {
-  res.cookie("refreshToken", refreshToken, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
-    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in ms
-  });
+  res.cookie("refreshToken", refreshToken, COOKIE_OPTIONS);
 };
 
 // ─── REGISTER ────────────────────────────────────────────────────────────────
@@ -138,7 +145,9 @@ const refresh = async (req, res) => {
 // POST /api/auth/logout
 // Clears the refresh cookie. Frontend is responsible for deleting its stored access token.
 const logout = (req, res) => {
-  res.clearCookie("refreshToken");
+  // clearCookie MUST receive the same options (sameSite, secure, httpOnly)
+  // that were used when setting the cookie — otherwise the browser ignores the clear.
+  res.clearCookie("refreshToken", COOKIE_OPTIONS);
   res.json({ message: "Logged out successfully" });
 };
 
