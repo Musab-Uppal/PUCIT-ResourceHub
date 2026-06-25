@@ -9,6 +9,14 @@ import FilterBar from '../components/FilterBar';
 export default function HomePage() {
   const [filters, setFilters] = useState({ page: 1 });
   const [serverAwake, setServerAwake] = useState(true);
+  const [showDownloadTip, setShowDownloadTip] = useState(
+    () => localStorage.getItem('downloadTipDismissed') !== 'true'
+  );
+
+  const dismissDownloadTip = () => {
+    localStorage.setItem('downloadTipDismissed', 'true');
+    setShowDownloadTip(false);
+  };
 
   // Ping the health endpoint once — shows a toast if server is cold-starting
   useEffect(() => {
@@ -62,6 +70,34 @@ export default function HomePage() {
       <div className="mb-6">
         <FilterBar filters={filters} onChange={setFilters} />
       </div>
+
+      {/* Download info banner — shown once until dismissed */}
+      <AnimatePresence>
+        {showDownloadTip && (
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.25 }}
+            className="flex items-start gap-3 bg-sky-500/8 border border-sky-500/25 rounded-xl px-4 py-3 mb-6"
+          >
+            <span className="text-sky-400 text-lg shrink-0 mt-0.5">ℹ️</span>
+            <p className="text-xs text-sky-300/80 leading-relaxed flex-1">
+              <span className="font-semibold text-sky-300">Heads up about downloads:</span>{' '}
+              Some files may download with an unusual name or no extension. Don't worry — just{' '}
+              <span className="font-semibold text-sky-200">rename the file and add <code className="bg-sky-500/15 px-1 rounded">.pdf</code> at the end</span>,
+              or open it directly with your PDF reader and it will work perfectly.
+            </p>
+            <button
+              onClick={dismissDownloadTip}
+              aria-label="Dismiss"
+              className="text-sky-500/60 hover:text-sky-300 transition-colors text-lg leading-none shrink-0 mt-0.5"
+            >
+              ✕
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Grid */}
       {isLoading && resources.length === 0 ? (

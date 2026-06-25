@@ -57,11 +57,10 @@ export default function ResourceDetailsPage() {
       const url = resource.fileUrl;
       const safeTitle = resource.title.replace(/[^a-zA-Z0-9_-]/g, '_');
       const attachmentFlag = `fl_attachment:${safeTitle}`;
-      
+
       const parts = url.split('/upload/');
       if (parts.length === 2) {
         const downloadUrl = `${parts[0]}/upload/${attachmentFlag}/${parts[1]}`;
-        // Creating an anchor element to trigger download
         const a = document.createElement('a');
         a.href = downloadUrl;
         a.download = safeTitle;
@@ -73,6 +72,7 @@ export default function ResourceDetailsPage() {
       }
     }
   };
+
 
   return (
     <motion.main 

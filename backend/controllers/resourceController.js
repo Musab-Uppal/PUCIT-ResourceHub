@@ -71,6 +71,7 @@ const uploadResource = async (req, res) => {
       type: isImage ? "image" : "pdf",
       fileUrl: url,
       cloudinaryId: publicId,
+      originalFileName: req.file.originalname || null,
       course: course || null,
       teacher: teacher || null,
       degree: degree ? (Array.isArray(degree) ? degree : [degree]) : [],
@@ -164,7 +165,7 @@ const approveResource = async (req, res) => {
     const resource = await Resource.findByIdAndUpdate(
       req.params.id,
       { status: "approved", rejectionReason: null },
-      { new: true }
+      { returnDocument: 'after' }
     );
     if (!resource) return res.status(404).json({ message: "Resource not found" });
     res.json({ message: "Resource approved", resource });

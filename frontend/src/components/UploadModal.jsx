@@ -142,6 +142,25 @@ export default function UploadModal({ onClose }) {
                 </div>
               ) : (
                 <div>
+                  {/* ── Storage tip banner ── */}
+                  <div className="flex gap-3 items-start bg-amber-500/8 border border-amber-500/25 rounded-xl px-4 py-3 mb-3">
+                    <span className="text-amber-400 text-base mt-0.5 shrink-0">💡</span>
+                    <p className="text-xs text-amber-300/80 leading-relaxed">
+                      <span className="font-semibold text-amber-300">Large file?</span>{' '}
+                      Upload it to{' '}
+                      <a
+                        href="https://drive.google.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={e => e.stopPropagation()}
+                        className="underline underline-offset-2 hover:text-amber-200 transition-colors"
+                      >
+                        Google Drive
+                      </a>{' '}
+                      and share it as a <strong>Link</strong> instead — this helps keep storage usage in check for everyone.
+                    </p>
+                  </div>
+
                   <label className="text-xs text-slate-400 mb-1 block">File * (max 20 MB)</label>
                   <div
                     onClick={() => fileRef.current?.click()}

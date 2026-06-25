@@ -58,6 +58,13 @@ const resourceSchema = new mongoose.Schema(
       default: null,
     },
 
+    // Original filename from the uploader's machine (e.g. "DSA_Notes.pdf")
+    // Used to build a proper fl_attachment Cloudinary download URL with the correct name + extension.
+    originalFileName: {
+      type: String,
+      default: null,
+    },
+
     // Validated against the COURSES constant array
     course: {
       type: String,
