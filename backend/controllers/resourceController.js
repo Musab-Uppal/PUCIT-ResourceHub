@@ -7,7 +7,7 @@ const { COURSES, TEACHERS, DEGREES, CAMPUSES } = require("../config/constants");
 // Frontend calls this once on load to populate the course/teacher dropdowns.
 // No auth needed — it's just static data.
 const getMeta = (req, res) => {
-  res.json({ courses: COURSES, teachers: TEACHERS, degrees: DEGREES, campuses: CAMPUSES });
+  res.json({ courses: COURSES.sort(), teachers: TEACHERS.sort(), degrees: DEGREES.sort(), campuses: CAMPUSES.sort() });
 };
 
 // ─── UPLOAD RESOURCE ─────────────────────────────────────────────────────────
