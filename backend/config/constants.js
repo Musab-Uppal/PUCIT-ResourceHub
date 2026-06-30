@@ -83,7 +83,6 @@ const TEACHERS = [
   "Mehwish Kayani",
   "Dr Sanam Ahmed",
   "Dr Natalia Chaudhry",
-  // ... add more as needed
   "Prof. Dr. Waqar ul Qounain",
   "Dr Nadeem Akhtar",
   "Dr. Asif Sohail",
@@ -111,10 +110,10 @@ const TEACHERS = [
   "Dr. Syed Muhammad Ali",
   "Imran Javed",
   "Dr. Muhammad Abdullah",
-  "Mam Sara Ejaz",
-  "Mam Nadia Mehak",
-  "Mam Amna Munir",
-  "Sir Humayoun Adil"
+  "Sara Ejaz",
+  "Nadia Mehak",
+  "Amna Munir",
+  "Humayoun Adil"
   // ... add more as needed
 ];
 
