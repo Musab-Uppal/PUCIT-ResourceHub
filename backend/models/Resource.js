@@ -29,7 +29,7 @@ const resourceSchema = new mongoose.Schema(
       trim: true,
       maxlength: [120, "Title cannot exceed 120 characters"],
     },
-
+//optional
     description: {
       type: String,
       trim: true,

@@ -38,22 +38,34 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <div className="glass border-brand-500/20 bg-brand-500/5 rounded-3xl p-8 text-center">
-        <h2 className="text-xl font-semibold text-white mb-3">Get in Touch</h2>
+      {/* GitHub feedback section */}
+      <div className="glass border border-brand-500/20 bg-brand-500/5 rounded-3xl p-8 text-center">
+        <div className="flex items-center justify-center gap-3 mb-3">
+          {/* GitHub icon */}
+          <svg className="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.185 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.026 2.747-1.026.546 1.378.202 2.397.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C19.138 20.2 22 16.447 22 12.021 22 6.484 17.523 2 12 2z"/>
+          </svg>
+          <h2 className="text-xl font-semibold text-white">Found a Bug? Have a Suggestion?</h2>
+        </div>
         <p className="text-slate-400 text-sm mb-6 max-w-lg mx-auto">
-          Have a suggestion, found a bug, or want to share new ideas/content? We'd love to hear from you.
+          Help improve PUCIT ResourceHub by raising an issue on GitHub. Whether it's a bug report, a feature request, or a general idea — all contributions are welcome!
         </p>
-
         <a
-          href="mailto:musabismail02@gmail.com?subject=PUCIT%20ResourceHub%20Feedback"
+          href="https://github.com/Musab-Uppal/PUCIT-ResourceHub/issues/new"
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-600 text-white px-6 py-3 rounded-xl font-medium transition-colors shadow-lg shadow-brand-500/20"
         >
-          ✉️ Contact Admin
+          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.185 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.026 2.747-1.026.546 1.378.202 2.397.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C19.138 20.2 22 16.447 22 12.021 22 6.484 17.523 2 12 2z"/>
+          </svg>
+          Raise an Issue on GitHub
         </a>
         <p className="text-xs text-slate-500 mt-4">
-          musabismail02@gmail.com
+          github.com/Musab-Uppal/PUCIT-ResourceHub
         </p>
       </div>
+
     </main>
   );
 }

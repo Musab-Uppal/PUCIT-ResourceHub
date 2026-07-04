@@ -42,8 +42,11 @@ export default function Navbar() {
 
           {/* Right: actions */}
           <div className="flex items-center gap-3">
-            <Link to="/about" className="text-sm text-slate-300 hover:text-white transition-colors font-medium mr-1">
+            <Link to="/about" className="text-sm text-slate-300 hover:text-white transition-colors font-medium">
               About
+            </Link>
+            <Link to="/gpa-calculator" className="text-sm text-slate-300 hover:text-white transition-colors font-medium flex items-center gap-1">
+              🎓 GPA Calc
             </Link>
 
             <button
