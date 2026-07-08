@@ -1,5 +1,53 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
+
+const SITE_URL = 'https://pucit-resource-hub.vercel.app';
+
+const GPA_JSON_LD = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebApplication',
+      name: 'PUCIT GPA Calculator',
+      url: `${SITE_URL}/gpa-calculator`,
+      description: 'Calculate your semester GPA and cumulative CGPA for PUCIT University of the Punjab using course credit hours and grades.',
+      applicationCategory: 'EducationalApplication',
+      operatingSystem: 'Any',
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'PKR' },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'How is GPA calculated at PUCIT?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'PUCIT uses a 4.0 GPA scale. GPA = Sum(Grade Points × Credit Hours) / Total Credit Hours for the semester. Grade A = 4.0, A- = 3.7, B+ = 3.3, B = 3.0, and so on.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What is a good CGPA for PUCIT BSCS?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'A CGPA of 3.5 or above is considered excellent at PUCIT. A CGPA above 3.0 is generally good. Students need at least 2.0 CGPA to remain in good academic standing.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'How do I calculate cumulative CGPA at PUCIT?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'CGPA = (Previous CGPA × Previous Credit Hours + Current Semester GPA × Current Credit Hours) / (Previous + Current Credit Hours). Use the PUCIT GPA Calculator above to compute this automatically.',
+          },
+        },
+      ],
+    },
+  ],
+});
+
 
 // Grade options — edit `points` values to match your university's scale
 const GRADE_OPTIONS = [
@@ -92,9 +140,36 @@ export default function GpaCalculatorPage() {
   return (
     <div className="min-h-screen bg-surface-900 pt-6 pb-12 px-4">
 
+      {/* ── SEO ── */}
+      <Helmet>
+        <title>PUCIT GPA Calculator 2025 — Semester GPA & CGPA Calculator | PUCIT ResourceHub</title>
+        <meta name="description" content="Free PUCIT GPA calculator. Enter your courses, credit hours, and grades to instantly compute your semester GPA and cumulative CGPA on the 4.0 scale used at University of the Punjab, Lahore." />
+        <meta name="keywords" content="PUCIT GPA calculator, CGPA calculator PUCIT, University of Punjab GPA, BSCS GPA calculator, PUCIT semester GPA, how to calculate GPA PUCIT, Punjab University CGPA, 4.0 GPA scale Pakistan" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={`${SITE_URL}/gpa-calculator`} />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="PUCIT ResourceHub" />
+        <meta property="og:title" content="PUCIT GPA Calculator 2025 — Semester GPA & CGPA Calculator" />
+        <meta property="og:description" content="Instantly compute your PUCIT semester GPA and cumulative CGPA. Supports all courses and credit hours on the 4.0 scale." />
+        <meta property="og:image" content={`${SITE_URL}/logo.png`} />
+        <meta property="og:url" content={`${SITE_URL}/gpa-calculator`} />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="PUCIT GPA Calculator 2025" />
+        <meta name="twitter:description" content="Calculate your PUCIT semester GPA and cumulative CGPA instantly with this free tool." />
+        <meta name="twitter:image" content={`${SITE_URL}/logo.png`} />
+
+        {/* JSON-LD Structured Data */}
+        <script type="application/ld+json">{GPA_JSON_LD}</script>
+      </Helmet>
+
       {/* Page header — compact */}
       <div className="max-w-3xl mx-auto mb-5 text-center">
         <motion.div initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
+
           <h1 className="text-2xl font-extrabold text-white mb-1">
             GPA <span className="gradient-text">Calculator</span>
           </h1>

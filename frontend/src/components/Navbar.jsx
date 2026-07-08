@@ -48,6 +48,9 @@ export default function Navbar() {
             <Link to="/gpa-calculator" className="text-sm text-slate-300 hover:text-white transition-colors font-medium flex items-center gap-1">
               🎓 GPA Calc
             </Link>
+            <Link to="/merit-calculator" className="text-sm text-slate-300 hover:text-white transition-colors font-medium flex items-center gap-1">
+              📊 Merit Calc
+            </Link>
 
             <button
               onClick={() => user ? setShowUpload(true) : (window.location.href = '/login')}

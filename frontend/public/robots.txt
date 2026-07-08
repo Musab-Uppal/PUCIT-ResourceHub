@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Pages to index
+Allow: /gpa-calculator
+Allow: /merit-calculator
+Allow: /about
+
+# Block backend/API routes from being indexed (if ever crawled)
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://pucit-resource-hub.vercel.app/sitemap.xml

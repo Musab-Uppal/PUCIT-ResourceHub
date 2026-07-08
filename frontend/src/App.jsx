@@ -10,6 +10,7 @@ import MyUploadsPage from './pages/MyUploadsPage';
 import AdminPage from './pages/AdminPage';
 import AboutPage from './pages/AboutPage';
 import GpaCalculatorPage from './pages/GpaCalculatorPage';
+import MeritCalculatorPage from './pages/MeritCalculatorPage';
 import ResourceDetailsPage from './pages/ResourceDetailsPage';
 import useAuthStore from './store/authStore';
 
@@ -46,6 +47,7 @@ export default function App() {
         <Route path="/"            element={<HomePage />} />
         <Route path="/about"       element={<AboutPage />} />
         <Route path="/gpa-calculator" element={<GpaCalculatorPage />} />
+        <Route path="/merit-calculator" element={<MeritCalculatorPage />} />
         <Route path="/resource/:id" element={<ResourceDetailsPage />} />
         <Route path="/login"       element={<LoginPage />} />
         <Route path="/register"    element={<RegisterPage />} />
