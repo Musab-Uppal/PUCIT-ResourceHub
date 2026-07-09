@@ -142,7 +142,7 @@ export default function GpaCalculatorPage() {
 
       {/* ── SEO ── */}
       <Helmet>
-        <title>PUCIT GPA Calculator 2025 — Semester GPA & CGPA Calculator | PUCIT ResourceHub</title>
+        <title>{`PUCIT GPA Calculator ${new Date().getFullYear()} — Semester GPA & CGPA Calculator | PUCIT ResourceHub`}</title>
         <meta name="description" content="Free PUCIT GPA calculator. Enter your courses, credit hours, and grades to instantly compute your semester GPA and cumulative CGPA on the 4.0 scale used at University of the Punjab, Lahore." />
         <meta name="keywords" content="PUCIT GPA calculator, CGPA calculator PUCIT, University of Punjab GPA, BSCS GPA calculator, PUCIT semester GPA, how to calculate GPA PUCIT, Punjab University CGPA, 4.0 GPA scale Pakistan" />
         <meta name="robots" content="index, follow" />

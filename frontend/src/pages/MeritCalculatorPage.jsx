@@ -137,7 +137,7 @@ export default function MeritCalculatorPage() {
 
       {/* ── SEO ── */}
       <Helmet>
-        <title>PUCIT Merit Calculator @Date().year   — Calculate Your Admission Merit Score | PUCIT ResourceHub</title>
+        <title>{`PUCIT Merit Calculator ${new Date().getFullYear()} — Calculate Your Admission Merit Score | PUCIT ResourceHub`}</title>
         <meta name="description" content="Free online PUCIT merit calculator. Enter your Matric, Inter Part-I marks and PU Admission Test score to instantly calculate your PUCIT admission merit. Supports Hafiz-e-Quran bonus." />
         <meta name="keywords" content="PUCIT merit calculator, PUCIT admission merit 2026, Punjab University merit calculator, BSCS PUCIT merit, BSIT PUCIT merit, FSc merit PUCIT, Hafiz e Quran merit bonus PUCIT, PU entry test merit, how to calculate PUCIT merit" />
         <meta name="robots" content="index, follow" />
