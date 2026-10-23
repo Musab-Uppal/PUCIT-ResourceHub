@@ -43,7 +43,12 @@ const COURSES = [
   "Computer Vision",
   "Machine Learning",
   "Technical and Business Writing",
+  "Buisness Process Engineering",
   "Quran Translation",
+  "Cloud Computing",
+  "Parallel and Distributed Computing",
+  
+
 ];
 
 const TEACHERS = [
