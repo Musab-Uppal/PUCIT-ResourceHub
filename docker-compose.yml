@@ -1,0 +1,36 @@
+services:
+  # ─── 1. Backend Service ──────────────────────────────────────────────────
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: pucit-backend
+    restart: always
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./backend/.env
+    networks:
+      - pucit-network
+
+  # ─── 2. Frontend Service ─────────────────────────────────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        # Browser makes requests to backend via localhost on your PC:
+        - VITE_API_URL=http://localhost:5000/api
+    container_name: pucit-frontend
+    restart: always
+    ports:
+      - "3000:80" # Accessible at http://localhost:3000
+    depends_on:
+      - backend
+    networks:
+      - pucit-network
+
+# ─── Internal Network ────────────────────────────────────────────────────────
+networks:
+  pucit-network:
+    driver: bridge
